@@ -64,27 +64,3 @@ module "aks_nodepool" {
   )
   depends_on = [module.aks]
 }
-
-module "aks_nodepool" {
-  source                = "./modules/azure/aks_nodepools"
-  for_each              = var.aks["user_pools"]
-  kubernetes_cluster_id = module.aks.id
-  name                  = each.key
-  vm_size               = each.value.vm_size
-  node_count            = each.value.node_count
-  os_disk_size_gb       = each.value.os_disk_size_gb
-  availability_zones    = each.value.availability_zones
-  max_pods              = each.value.max_pods
-  enable_auto_scaling   = each.value.enable_auto_scaling
-  max_count             = each.value.max_count
-  min_count             = each.value.min_count
-  enable_node_public_ip = each.value.enable_node_public_ip
-  vnet_subnet_id        = module.vnet.subnet_id[each.value.subnet]
-  tags = merge(
-    local.base_tags,
-    {
-      module_version = "local"
-    }
-  )
-  depends_on = [module.aks]
-}
