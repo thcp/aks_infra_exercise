@@ -3,7 +3,7 @@ resource "kubernetes_role_binding" "rb" {
     name      = var.name
     namespace = var.namespace
     labels = {
-      app = each.key
+      app = var.name
     }
   }
   role_ref {
