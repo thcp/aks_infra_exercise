@@ -16,3 +16,8 @@ variable "aks" {
   description = "AKS variables"
   type        = any
 }
+
+variable "aks_resources" {
+  type    = any
+  default = {}
+}

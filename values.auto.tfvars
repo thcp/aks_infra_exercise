@@ -54,3 +54,37 @@ aks = {
     }
   }
 }
+
+aks_resources = {
+  namespaces = [
+    "app"
+  ]
+  deployments = {
+    nodeapi = {
+      namespace       = "app"
+      docker_registry = "thclpr"
+      docker_image    = "nodeapi"
+      docker_tag      = "1.0.0"
+      port            = 3000
+      replicas        = 3
+      agentpool = [
+        "sys",
+        "user"
+      ]
+      resources = {
+        limit = {
+          cpu    = "40m"
+          memory = "512Mi"
+        }
+        requests = {
+          cpu    = "10m"
+          memory = "1Mi"
+        }
+      }
+      hpa = {
+        max_replicas = 20
+        min_replicas = 3
+      }
+    }
+  }
+}
