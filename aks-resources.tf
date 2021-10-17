@@ -31,6 +31,7 @@ module "aks_role" {
 module "aks_deployment" {
   source          = "./modules/kubernetes/deployment"
   for_each        = var.aks_resources.deployments
+  namespace       = each.value.namespace
   replicas        = each.value.replicas
   node_label      = "agentpool"
   node_values     = each.value.agentpool
@@ -46,3 +47,11 @@ module "aks_deployment" {
   request_memory  = each.value.resources.requests.memory
 }
 
+module "aks_hpa" {
+  source       = "./modules/kubernetes/hpa"
+  for_each     = var.aks_resources.deployments
+  name         = each.key
+  namespace    = each.value.namespace
+  max_replicas = each.value.hpa.max_replicas
+  min_replicas = each.value.hpa.min_replicas
+}
