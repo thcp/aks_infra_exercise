@@ -1,4 +1,4 @@
-name: 'Terraform'
+name: 'Base Infrastructure'
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          context: ./resources/docker/
+          context: .
           push: true
           tags: user/app:latest
   terraform:
