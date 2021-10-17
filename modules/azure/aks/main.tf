@@ -38,7 +38,7 @@ resource "azurerm_kubernetes_cluster" "k8" {
   private_cluster_enabled = var.private_cluster_enabled
 
   tags = var.tags
-  
+
   # lifecycle {
   #   prevent_destroy = true
   # }

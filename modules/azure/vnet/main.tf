@@ -12,11 +12,11 @@ resource "azurerm_virtual_network" "vnet" {
 }
 
 resource "azurerm_subnet" "subnet" {
-  for_each                                       = var.subnets
-  name                                           = each.key
-  virtual_network_name                           = azurerm_virtual_network.vnet.name
-  resource_group_name                            = var.resource_group_name
-  address_prefixes                               = [each.value]
+  for_each             = var.subnets
+  name                 = each.key
+  virtual_network_name = azurerm_virtual_network.vnet.name
+  resource_group_name  = var.resource_group_name
+  address_prefixes     = [each.value]
   # lifecycle {
   #   prevent_destroy = true
   # }

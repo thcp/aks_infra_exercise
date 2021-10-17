@@ -57,11 +57,11 @@ module "aks_hpa" {
 }
 
 module "aks_service" {
-  source       = "./modules/kubernetes/service"
-  for_each     = var.aks_resources.deployments
-  name         = each.key
-  namespace    = each.value.namespace
-  port = each.value.port
+  source    = "./modules/kubernetes/service"
+  for_each  = var.aks_resources.deployments
+  name      = each.key
+  namespace = each.value.namespace
+  port      = each.value.port
 }
 
 
@@ -69,12 +69,12 @@ module "aks_service" {
 resource "kubernetes_ingress" "ingress" {
   for_each = var.aks_resources.deployments
   metadata {
-    name = each.key
+    name      = each.key
     namespace = each.value.namespace
     annotations = {
-      "kubernetes.io/ingress.class" = "nginx"
+      "kubernetes.io/ingress.class"          = "nginx"
       "ingress.kubernetes.io/rewrite-target" = "/"
-    }        
+    }
   }
   spec {
     rule {

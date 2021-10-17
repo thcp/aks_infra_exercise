@@ -1,21 +1,21 @@
 variable "name" {
-  type = string
+  type    = string
   default = "dev"
 }
 variable "namespace" {
-  type = string
+  type    = string
   default = "dev"
 }
 
 variable "api_groups" {
-  type = list
-  default  = []
+  type    = list(any)
+  default = []
 }
 variable "resources" {
-  type = list
-  default  = []
+  type    = list(any)
+  default = []
 }
 variable "verbs" {
-  type = list
-  default  = []
+  type    = list(any)
+  default = []
 }
