@@ -55,3 +55,11 @@ module "aks_hpa" {
   max_replicas = each.value.hpa.max_replicas
   min_replicas = each.value.hpa.min_replicas
 }
+
+module "aks_service" {
+  source       = "./modules/kubernetes/service"
+  for_each     = var.aks_resources.deployments
+  name         = each.key
+  namespace    = each.value.namespace
+  port = each.value.port
+}
