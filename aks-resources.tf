@@ -17,3 +17,14 @@ module "aks_service_account" {
   name      = each.key
   namespace = each.value.namespace
 }
+
+module "aks_role" {
+  source     = "./modules/kubernetes/role"
+  for_each   = var.aks_resources.deployments
+  name       = each.key
+  namespace  = each.value.namespace
+  api_groups = [""]
+  resources  = ["pods"]
+  verbs      = ["get"]
+}
+
