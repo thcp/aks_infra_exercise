@@ -63,3 +63,38 @@ module "aks_service" {
   namespace    = each.value.namespace
   port = each.value.port
 }
+
+
+# TODO: add to module.
+resource "kubernetes_ingress" "ingress" {
+  for_each = var.aks_resources.deployments
+  metadata {
+    name = each.key
+    namespace = each.value.namespace
+    annotations = {
+      "kubernetes.io/ingress.class" = "nginx"
+      "ingress.kubernetes.io/rewrite-target" = "/"
+    }        
+  }
+  spec {
+    rule {
+      http {
+        path {
+          backend {
+            service_name = each.key
+            service_port = each.value.port
+          }
+          path = "/"
+        }
+      }
+    }
+  }
+}
+
+# TODO: add to module.
+resource "helm_release" "releases" {
+  name       = "ingress-nginx"
+  chart      = "ingress-nginx"
+  namespace  = "kube-system"
+  repository = "https://kubernetes.github.io/ingress-nginx"
+}
