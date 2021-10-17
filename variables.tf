@@ -11,3 +11,8 @@ variable "tags" {
 variable "network" {
   type = any
 }
+
+variable "aks" {
+  description = "AKS variables"
+  type        = any
+}
