@@ -21,13 +21,13 @@ network = {
 }
 
 aks = {
-  version                 = "1.21.2"
-  sku_tier                = "Free"
-  admin_user              = "sandbox_admin_as8skd"
-  system_pool_subnet      = "nodes"
-  private_cluster_enabled = false
+  version                         = "1.21.2"
+  sku_tier                        = "Free"
+  admin_user                      = "sandbox_admin_as8skd"
+  system_pool_subnet              = "nodes"
+  private_cluster_enabled         = false
   api_server_authorized_ip_ranges = []
-  
+
   system_pool = [{
     "name"                = "sys"
     "vm_size"             = "standard_B2s"
@@ -51,6 +51,6 @@ aks = {
       "max_count"             = 1
       "enable_node_public_ip" = false
       "subnet"                = "nodes"
-    }      
-  }  
+    }
+  }
 }

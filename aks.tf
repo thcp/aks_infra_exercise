@@ -20,18 +20,18 @@ locals {
   }
 }
 module "aks" {
-  name                     = format("aks-%s", terraform.workspace)
-  source   = "./modules/azure/aks"
-  resource_group_name      = module.rg_aks.name
-  location                 = module.rg_aks.location
-  node_resource_group_name = format("aks-nodes-%s-rg", terraform.workspace)
-  dns_prefix               = format("aks-%s", terraform.workspace)
-  admin_user               = var.aks.admin_user
-  agent_pools              = var.aks.system_pool
-  k8s_version              = var.aks.version
-  sku_tier                 = var.aks.sku_tier
-  vnet_subnet_id           = module.vnet.subnet_id[var.aks.system_pool_subnet]
-  private_cluster_enabled  = var.aks.private_cluster_enabled
+  name                            = format("aks-%s", terraform.workspace)
+  source                          = "./modules/azure/aks"
+  resource_group_name             = module.rg_aks.name
+  location                        = module.rg_aks.location
+  node_resource_group_name        = format("aks-nodes-%s-rg", terraform.workspace)
+  dns_prefix                      = format("aks-%s", terraform.workspace)
+  admin_user                      = var.aks.admin_user
+  agent_pools                     = var.aks.system_pool
+  k8s_version                     = var.aks.version
+  sku_tier                        = var.aks.sku_tier
+  vnet_subnet_id                  = module.vnet.subnet_id[var.aks.system_pool_subnet]
+  private_cluster_enabled         = var.aks.private_cluster_enabled
   api_server_authorized_ip_ranges = var.aks.api_server_authorized_ip_ranges
   tags = merge(
     local.base_tags,
