@@ -26,7 +26,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          context: ./resources/docker
           file: ./resources/docker/Dockerfile
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/nodeapi:dev
   
