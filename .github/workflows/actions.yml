@@ -28,7 +28,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          context: resources/docker
+          context: ./resources/docker/
           push: true
           tags: user/app:latest
   terraform:
