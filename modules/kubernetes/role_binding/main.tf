@@ -9,7 +9,7 @@ resource "kubernetes_role_binding" "rb" {
   role_ref {
     kind      = "Role"
     api_group = "rbac.authorization.k8s.io"
-    name      = each.key
+    name      = var.name
   }
   subject {
     kind      = "ServiceAccount"
