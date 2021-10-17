@@ -10,3 +10,10 @@ module "aks_role_binding" {
   name      = each.key
   namespace = each.value.namespace
 }
+
+module "aks_service_account" {
+  source    = "./modules/kubernetes/service_account"
+  for_each  = var.aks_resources.deployments
+  name      = each.key
+  namespace = each.value.namespace
+}
