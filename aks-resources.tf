@@ -35,6 +35,7 @@ module "aks_deployment" {
   source          = "./modules/kubernetes/deployment"
   for_each        = var.aks_resources.deployments
   namespace       = each.value.namespace
+  name            = each.key
   replicas        = each.value.replicas
   node_label      = "agentpool"
   node_values     = each.value.agentpool
