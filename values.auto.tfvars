@@ -74,7 +74,7 @@ aks_resources = {
       resources = {
         limit = {
           cpu    = "40m"
-          memory = "512Mi"
+          memory = "256Mi"
         }
         requests = {
           cpu    = "10m"
@@ -82,7 +82,7 @@ aks_resources = {
         }
       }
       hpa = {
-        max_replicas = 20
+        max_replicas = 10
         min_replicas = 3
       }
     }
