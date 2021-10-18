@@ -37,7 +37,7 @@ jobs:
         with:
           push: true
           file: ./resources/docker/Dockerfile
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/nodeapi:dev          
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/nodeapi:${{ github.ref }}
       -
         name: push
         id: docker_push
