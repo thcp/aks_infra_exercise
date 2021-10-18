@@ -42,13 +42,13 @@ aks = {
   user_pools = {
     "user" = {
       "vm_size"               = "Standard_B2s"
-      "node_count"            = 0
+      "node_count"            = 1
       "os_disk_size_gb"       = 30
       "availability_zones"    = ["1"]
       "max_pods"              = 15
       "enable_auto_scaling"   = true
-      "min_count"             = 0
-      "max_count"             = 1
+      "min_count"             = 1
+      "max_count"             = 2
       "enable_node_public_ip" = false
       "subnet"                = "nodes"
     }
