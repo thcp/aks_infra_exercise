@@ -8,8 +8,8 @@ For this exercise, base infrastructure with the related dependencies will be ach
     - network security group along with related subnet associations
     - azure Kubernetes Services (basic install for training purposes)
         - pools
-            - system pool
-            - user pool
+            - system
+            - user
 
 
 # Pre Setup and Provisioning
