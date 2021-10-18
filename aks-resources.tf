@@ -9,7 +9,7 @@ module "aks_role_binding" {
   for_each  = var.aks_resources.deployments
   name      = each.key
   namespace = each.value.namespace
-  depends_on = [module.namespace]
+  depends_on = [module.aks_namespace]
 }
 
 module "aks_service_account" {
@@ -17,7 +17,7 @@ module "aks_service_account" {
   for_each  = var.aks_resources.deployments
   name      = each.key
   namespace = each.value.namespace
-  depends_on = [module.namespace]
+  depends_on = [module.aks_namespace]
 }
 
 module "aks_role" {
@@ -28,7 +28,7 @@ module "aks_role" {
   api_groups = [""]
   resources  = ["pods"]
   verbs      = ["get"]
-  depends_on = [module.namespace]
+  depends_on = [module.aks_namespace]
 }
 
 module "aks_deployment" {
@@ -48,7 +48,7 @@ module "aks_deployment" {
   limit_memory    = each.value.resources.limit.memory
   request_cpu     = each.value.resources.requests.cpu
   request_memory  = each.value.resources.requests.memory
-  depends_on = [module.namespace]
+  depends_on = [module.aks_namespace]
 }
 
 module "aks_hpa" {
