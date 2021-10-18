@@ -10,8 +10,6 @@ For this exercise, base infrastructure with the related dependencies will be ach
         - pools
             - system pool
             - user pool
-                - primary
-                - secondary
 
 
 # Pre Setup and Provisioning
